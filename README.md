@@ -9,7 +9,8 @@ docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config
 ```
 ### Docker Compose
 ```
-autoremove:
+services:
+  autoremove:
     image: champpg/autoremove-torrents:latest
     container_name: autoremove-torrents
     restart: unless-stopped

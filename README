@@ -2,10 +2,10 @@
 
 ### Docker
 
-    docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+    `docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions`
 
 ### Docker Compose
-
+```
     autoremove:
       image: champpg/autoremove-torrents:latest
       container_name: autoremove-torrents
@@ -14,7 +14,7 @@
         - /path/to/config.yml:/app/config.yml
       environment:
         - OPTS=customoptions
-
+``
 ### Config.yml
 
     my_task:

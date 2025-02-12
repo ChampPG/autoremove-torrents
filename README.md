@@ -1,4 +1,7 @@
 ## Usage
+[Docker Hub](https://hub.docker.com/r/champpg/autoremove-torrents)
+
+Credit: [dantebarba](https://github.com/dantebarba/docker-autoremove-torrents) - Original creator
 
 ### Docker
 ```
@@ -61,6 +64,3 @@ OPTS can take the following arguments:
 </tr>
 </tbody>
 </table>
-
-Credit:
-[dantebarba](https://github.com/dantebarba/docker-autoremove-torrents) - Original creator

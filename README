@@ -1,33 +1,33 @@
 ## Usage
 
 ### Docker
-
-    `docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions`
-
+```
+docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+```
 ### Docker Compose
 ```
-    autoremove:
-      image: champpg/autoremove-torrents:latest
-      container_name: autoremove-torrents
-      restart: unless-stopped
-      volumes:
-        - /path/to/config.yml:/app/config.yml
-      environment:
-        - OPTS=customoptions
-``
+autoremove:
+    image: champpg/autoremove-torrents:latest
+    container_name: autoremove-torrents
+    restart: unless-stopped
+    volumes:
+    - /path/to/config.yml:/app/config.yml
+    environment:
+    - OPTS=customoptions
+```
 ### Config.yml
-
-    my_task:
-      client: qbittorrent
-      host: http://127.0.0.1
-      username: admin
-      password: adminadmin
-      strategies:
-        my_strategy:
-          categories: IPT
-          remove: seeding_time > 1209600 or ratio > 1
-      delete_data: true
-
+```
+my_task:
+    client: qbittorrent
+    host: http://127.0.0.1
+    username: admin
+    password: adminadmin
+    strategies:
+    my_strategy:
+        categories: IPT
+        remove: seeding_time > 1209600 or ratio > 1
+    delete_data: true
+```
 OPTS can take the following arguments:
 
 <table border="1" class="docutils">

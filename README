@@ -1,6 +1,32 @@
 ## Usage
 
-    docker run dantebarba/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+### Docker
+
+    docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+
+### Docker Compose
+
+    autoremove:
+      image: champpg/autoremove-torrents:latest
+      container_name: autoremove-torrents
+      restart: unless-stopped
+      volumes:
+        - /path/to/config.yml:/app/config.yml
+      environment:
+        - OPTS=customoptions
+
+### Config.yml
+
+    my_task:
+      client: qbittorrent
+      host: http://127.0.0.1
+      username: admin
+      password: adminadmin
+      strategies:
+        my_strategy:
+          categories: IPT
+          remove: seeding_time > 1209600 or ratio > 1
+      delete_data: true
 
 OPTS can take the following arguments:
 
@@ -36,4 +62,5 @@ OPTS can take the following arguments:
 </tbody>
 </table>
 
-The file config.yml contains all the configuration needed to make autoremove-torrents work. Just bind the file to /app/config.yml and you are good to go.
+Credit:
+[dantebarba](https://github.com/dantebarba/docker-autoremove-torrents) - Original creator

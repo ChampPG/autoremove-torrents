@@ -3,10 +3,21 @@
 
 Credit: [dantebarba](https://github.com/dantebarba/docker-autoremove-torrents) - Original creator
 
+### Web UI
+
+A built-in Web UI on port **8080** lets you edit `config.yml`, run a **Preview** (`--view`), or **Run now**. When using a bind mount for `config.yml`, changes you save in the UI are persisted on the host.
+
+| Variable      | Default | Description                    |
+|---------------|---------|--------------------------------|
+| `WEBUI_PORT`  | `8080`  | Port for the Web UI.           |
+| `WEBUI_HOST`  | `0.0.0.0` | Host to bind the Web UI to.  |
+
 ### Docker
 ```
-docker run champpg/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+docker run -p 8080:8080 -v /path/to/config.yml:/app/config.yml -e OPTS='-c /app/config.yml' champpg/autoremove-torrents:latest
 ```
+Open http://localhost:8080 for the Web UI.
+
 ### Docker Compose
 ```
 services:
@@ -14,11 +25,14 @@ services:
     image: champpg/autoremove-torrents:latest
     container_name: autoremove-torrents
     restart: unless-stopped
+    ports:
+      - "8080:8080"
     volumes:
-    - /path/to/config.yml:/app/config.yml
+      - /path/to/config.yml:/app/config.yml
     environment:
-    - OPTS=customoptions
+      - OPTS=-c /app/config.yml
 ```
+Open http://localhost:8080 for the Web UI.
 ### Config.yml
 ```
 my_task:

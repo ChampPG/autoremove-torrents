@@ -1,6 +1,6 @@
 my_task:
   client: qbittorrent
-  host: http://127.0.0.1
+  host: http://127.0.0.1:32005
   username: admin
   password: adminadmin
   strategies:

@@ -13,11 +13,17 @@ RUN chmod +x /usr/bin/cron.sh
 
 RUN python3 -m venv .venv \
 && . ./.venv/bin/activate \
-&& pip install autoremove-torrents
+&& pip install autoremove-torrents flask pyyaml
 
 COPY config.example.yml config.yml
+COPY webui /app/webui
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
-ENV OPTS '-c /app/config.yml'
-ENV CRON '*/5 * * * *'
+ENV OPTS='-c /app/config.yml'
+ENV CRON='*/5 * * * *'
+ENV WEBUI_PORT=8080
 
-ENTRYPOINT ["/bin/sh", "/usr/bin/cron.sh"]
+EXPOSE 8080
+
+ENTRYPOINT ["/bin/sh", "/app/entrypoint.sh"]

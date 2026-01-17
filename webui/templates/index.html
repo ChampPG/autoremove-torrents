@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoRemove Torrents — Config</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>AutoRemove Torrents</h1>
+      <p class="subtitle">Edit <code>config.yml</code> and run preview or remove</p>
+    </header>
+
+    <main class="main">
+      <section class="editor-section">
+        <div class="toolbar">
+          <span class="label">config.yml</span>
+          <div class="view-toggle">
+            <button type="button" class="btn btn-toggle active" id="btn-view-form" data-view="form">Form</button>
+            <button type="button" class="btn btn-toggle" id="btn-view-raw" data-view="raw">Raw YAML</button>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn btn-ghost" id="btn-reload" title="Reload from disk">Reload</button>
+            <button type="button" class="btn btn-primary" id="btn-save" title="Save to disk">Save</button>
+          </div>
+        </div>
+        <div id="form-view" class="form-view">
+          <div id="form-container"></div>
+          <button type="button" class="btn btn-ghost btn-add-task" id="btn-add-task">+ Add task</button>
+        </div>
+        <div id="raw-view" class="raw-view" hidden>
+          <textarea id="editor" class="editor" spellcheck="false" placeholder="my_task:&#10;  client: qbittorrent&#10;  ..."></textarea>
+        </div>
+        <div id="editor-error" class="error-line" hidden></div>
+      </section>
+
+      <section class="run-section">
+        <div class="run-toolbar">
+          <h2>Actions</h2>
+          <div class="run-buttons">
+            <button type="button" class="btn btn-preview" id="btn-preview" title="See what would be removed (--view)">Preview</button>
+            <button type="button" class="btn btn-run" id="btn-run" title="Run autoremove now">Run now</button>
+          </div>
+        </div>
+        <div class="output-wrap">
+          <pre id="output" class="output"></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="https://github.com/jerrymakesjelly/autoremove-torrents" target="_blank" rel="noopener">autoremove-torrents</a>
+      <span> · </span>
+      <a href="https://autoremove-torrents.readthedocs.io/" target="_blank" rel="noopener">Docs</a>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
